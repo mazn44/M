@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز إيفان الذكي | الواجهة الشاملة</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           المتغيرات (الثيم الفاتح - ناعم وهادئ)
+           ========================================= */
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            
+            /* ألوان البطاقات الزجاجية */
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-shadow: 0 20px 40px rgba(148, 163, 184, 0.15);
+            
+            /* ألوان الأيقونات والتأثيرات */
+            --accent-1: #3b82f6; /* أزرق ناعم */
+            --accent-2: #8b5cf6; /* بنفسجي راقي */
+            --accent-3: #10b981; /* أخضر زمردي */
+            --accent-4: #f59e0b; /* ذهبي دافئ */
+            --accent-5: #ef4444; /* أحمر كرزي */
+            --accent-6: #06b6d4; /* سماوي منعش */
+            
+            /* خلفية الكرات المضيئة */
+            --blob-1: rgba(59, 130, 246, 0.3);
+            --blob-2: rgba(139, 92, 246, 0.3);
+        }
+
+        /* =========================================
+           المتغيرات (الثيم الداكن - فخم وعميق)
+           ========================================= */
+        [data-theme="dark"] {
+            --bg-color: #020617;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            
+            --accent-1: #60a5fa;
+            --accent-2: #a78bfa;
+            --accent-3: #34d399;
+            --accent-4: #fbbf24;
+            --accent-5: #f87171;
+            --accent-6: #22d3ee;
+
+            --blob-1: rgba(59, 130, 246, 0.15);
+            --blob-2: rgba(139, 92, 246, 0.15);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color); color: var(--text-main);
+            min-height: 100vh; overflow-x: hidden; position: relative;
+            transition: background-color 0.6s ease, color 0.6s ease;
+        }
+
+        /* =========================================
+           الخلفية السائلة (Liquid Blobs)
+           ========================================= */
+        .blobs-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; z-index: -1; filter: blur(80px);
+        }
+        .blob {
+            position: absolute; border-radius: 50%; animation: float 15s infinite alternate ease-in-out;
+        }
+        .blob-1 { width: 500px; height: 500px; background: var(--blob-1); top: -10%; left: -10%; animation-delay: 0s; }
+        .blob-2 { width: 400px; height: 400px; background: var(--blob-2); bottom: -10%; right: -10%; animation-delay: -5s; }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 100px) scale(1.2); }
+        }
+
+        /* =========================================
+           شريط التحكم العلوي
+           ========================================= */
+        .top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 5%; max-width: 1600px; margin: 0 auto;
+        }
+
+        .theme-switch {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px); padding: 12px 24px; border-radius: 30px;
+            cursor: pointer; display: flex; align-items: center; gap: 10px;
+            color: var(--text-main); font-size: 16px; font-weight: 700;
+            box-shadow: var(--glass-shadow); transition: all 0.3s ease;
+        }
+        .theme-switch:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        /* =========================================
+           الهيدر (العناوين والشعار)
+           ========================================= */
+        header { text-align: center; margin-top: 20px; margin-bottom: 60px; padding: 0 20px; }
+        
+        .logo-img {
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 3px solid var(--accent-1); padding: 3px;
+            background: #fff; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            margin-bottom: 20px; animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        .main-title { font-size: 48px; font-weight: 900; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .sub-title { font-size: 22px; font-weight: 800; color: var(--accent-1); margin-bottom: 10px; }
+        .desc-text { font-size: 18px; color: var(--text-muted); font-weight: 500; }
+
+        /* =========================================
+           شبكة الروابط (Grid & Cards)
+           ========================================= */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5% 100px; }
+
+        .links-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .card-link {
+            text-decoration: none; display: flex; flex-direction: column;
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 28px;
+            padding: 35px 30px; box-shadow: var(--glass-shadow);
+            position: relative; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            group: card;
+        }
+
+        /* تأثير المرور (Hover Effect) */
+        .card-link:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* لمسة الإضاءة الناعمة داخل البطاقة */
+        .card-link::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
+        }
+        .card-link:hover::before { opacity: 1; }
+
+        /* رقم البطاقة الخافت في الخلفية */
+        .card-number {
+            position: absolute; top: -10px; left: -10px;
+            font-size: 120px; font-weight: 900; line-height: 1;
+            color: var(--text-main); opacity: 0.03; z-index: 0;
+            transition: 0.5s;
+        }
+        .card-link:hover .card-number { transform: scale(1.1) rotate(-5deg); opacity: 0.06; }
+
+        /* محتوى البطاقة */
+        .card-content { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; }
+
+        .icon-box {
+            width: 70px; height: 70px; border-radius: 20px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 30px; margin-bottom: 25px; transition: transform 0.4s ease;
+        }
+        .card-link:hover .icon-box { transform: scale(1.1) rotate(5deg); }
+
+        .card-title { font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
+        .card-desc { font-size: 16px; color: var(--text-muted); font-weight: 500; line-height: 1.6; flex-grow: 1; }
+
+        .card-footer {
+            margin-top: 25px; display: flex; align-items: center; gap: 10px;
+            font-size: 15px; font-weight: 700; transition: 0.3s;
+        }
+        .card-link:hover .card-footer { gap: 15px; }
+
+        /* تخصيص ألوان كل بطاقة */
+        .c-1 .icon-box { background: rgba(59, 130, 246, 0.1); color: var(--accent-1); }
+        .c-1:hover { box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15); }
+        .c-1 .card-footer { color: var(--accent-1); }
+
+        .c-2 .icon-box { background: rgba(139, 92, 246, 0.1); color: var(--accent-2); }
+        .c-2:hover { box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15); }
+        .c-2 .card-footer { color: var(--accent-2); }
+
+        .c-3 .icon-box { background: rgba(16, 185, 129, 0.1); color: var(--accent-3); }
+        .c-3:hover { box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15); }
+        .c-3 .card-footer { color: var(--accent-3); }
+
+        .c-4 .icon-box { background: rgba(245, 158, 11, 0.1); color: var(--accent-4); }
+        .c-4:hover { box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15); }
+        .c-4 .card-footer { color: var(--accent-4); }
+
+        .c-5 .icon-box { background: rgba(239, 68, 68, 0.1); color: var(--accent-5); }
+        .c-5:hover { box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15); }
+        .c-5 .card-footer { color: var(--accent-5); }
+
+        .c-6 .icon-box { background: rgba(6, 182, 212, 0.1); color: var(--accent-6); }
+        .c-6:hover { box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15); }
+        .c-6 .card-footer { color: var(--accent-6); }
+
+        /* الموبايل */
+        @media (max-width: 768px) {
+            .main-title { font-size: 36px; }
+            .links-grid { grid-template-columns: 1fr; }
+            .top-nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="top-nav">
+        <button class="theme-switch" id="themeBtn" onclick="toggleTheme()">
+            <i class="fa-solid fa-moon"></i> <span>الوضع الداكن</span>
+        </button>
+    </div>
+
+    <header>
+        <img src="1000597074.png" alt="Ivan Show Logo" class="logo-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjIwIiByPSIxNSIgZmlsbD0iIzNiODJmNiIvPjx0ZXh0IHg9IjUwIiB5PSI4NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjcwIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+aTwvdGV4dD48L3N2Zz4='">
+        <h2 class="sub-title">مركز إيفان الذكي</h2>
+        <h1 class="main-title">لوحة معرض إيفان</h1>
+        <p class="desc-text">كل ما تحتاجه عن المعرض، السياسات، وخطط التطوير في مكان واحد.</p>
+    </header>
+
+    <main class="container">
+        <div class="links-grid">
+            
+            <a href="https://mazn44.github.io/55-Customer-Responses/" target="_blank" class="card-link c-1">
+                <span class="card-number">1</span>
+                <div class="card-content">
+                    <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+                    <h3 class="card-title">دليل الردود الذكية</h3>
+                    <p class="card-desc">كيف نرد على الزبون باحترافية عالية، وقواعد التعامل مع جميع المواقف.</p>
+                    <div class="card-footer">دخول للملف <i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+            </a>
+
+            <a href="https://mazn44.github.io/Page-Refresh-Report-66/" target="_blank" class="card-link c-2">
+                <span class="card-number">2</span>
+                <div class="card-content">
+                    <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="card-title">خطة الصدارة الرقمية</h3>
+                    <p class="card-desc">الاستراتيجية الشاملة لكيف نصير الرقم واحد في بحث جوجل ودهوك.</p>
+                    <div class="card-footer">دخول للملف <i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+            </a>
+
+            <a href="https://mazn44.github.io/Ivan-Constitution-/policy.html" target="_blank" class="card-link c-3">
+                <span class="card-number">3</span>
+                <div class="card-content">
+                    <div class="icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3 class="card-title">سياسة المعرض</h3>
+                    <p class="card-desc">القواعد، الإرشادات العامة، ودستور العمل الموحد لجميع أقسام المعرض.</p>
+                    <div class="card-footer">دخول للملف <i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+            </a>
+
+            <a href="https://mazn44.github.io/-/" target="_blank" class="card-link c-4">
+                <span class="card-number">4</span>
+                <div class="card-content">
+                    <div class="icon-box"><i class="fa-solid fa-circle-info"></i></div>
+                    <h3 class="card-title">من نحن</h3>
+                    <p class="card-desc">تعرف على معرض إيفان، رؤيتنا، والخدمات التي نقدمها لعملائنا.</p>
+                    <div class="card-footer">دخول للملف <i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+            </a>
+
+            <a href="https://mazn44.github.io/My-Achievements-7/" target="_blank" class="card-link c-5">
+                <span class="card-number">5</span>
+                <div class="card-content">
+                    <div class="icon-box"><i class="fa-solid fa-medal"></i></div>
+                    <h3 class="card-title">إنجازات التسويق</h3>
+                    <p class="card-desc">النتائج، النجاحات الرقمية، والتطوير الذي تم إنجازه في قسم التسويق.</p>
+                    <div class="card-footer">دخول للملف <i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+            </a>
+
+            <a href="https://mazn44.github.io/Exhibition-44/index.html" target="_blank" class="card-link c-6">
+                <span class="card-number">6</span>
+                <div class="card-content">
+                    <div class="icon-box"><i class="fa-solid fa-flag-checkered"></i></div>
+                    <h3 class="card-title">الملخص النهائي</h3>
+                    <p class="card-desc">خلاصة العمل، خطة التطوير الشاملة، والرؤية المستقبلية للمعرض.</p>
+                    <div class="card-footer">دخول للملف <i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        // سكربت تبديل الوضع (الداكن والفاتح)
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById('themeBtn');
+            const icon = themeBtn.querySelector('i');
+            const text = themeBtn.querySelector('span');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fa-solid fa-moon';
+                text.textContent = 'الوضع الداكن';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fa-solid fa-sun';
+                text.textContent = 'الوضع الفاتح';
+            }
+        }
+    </script>
+</body>
+</html>
