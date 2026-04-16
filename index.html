@@ -3,219 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز إيفان الذكي |  سهلنا عليك شغلك</title>
+    <title>مركز إيفان الذكي | الإمبراطورية الرقمية</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* =========================================
-           الثيم المظلم (Cyberpunk / High-Tech)
+           الثيم المظلم (High-End Dark Tech) - فخم وناعم
            ========================================= */
         :root {
-            --bg-color: #050914;
-            --text-main: #ffffff;
+            --bg-color: #030712; /* أسود ليلي عميق */
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
             
-            --glass-bg: rgba(10, 15, 30, 0.6);
-            --glass-border: rgba(0, 243, 255, 0.2);
-            --glass-shadow: 0 10px 40px rgba(0, 243, 255, 0.1);
+            --glass-bg: rgba(15, 23, 42, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             
-            --neon-1: #00f3ff; /* سيان مشع */
-            --neon-2: #bc13fe; /* بنفسجي نيون */
-            --neon-3: #ff003c; /* أحمر حماسي */
-            --neon-4: #00ff87; /* أخضر نيون */
-            --neon-5: #ff9a00; /* برتقالي طاقة */
-            --neon-6: #f6ff00; /* أصفر كهربائي */
+            /* نيون ناعم ومريح للعين */
+            --neon-blue: #38bdf8; 
+            --neon-purple: #c084fc;
+            --neon-emerald: #34d399;
+            --neon-gold: #fbbf24;
+            --neon-rose: #fb7185;
+            --neon-cyan: #22d3ee;
         }
 
-        /* الثيم الفاتح (Modern Clean Tech) */
+        /* الثيم الفاتح (Clean Light Mode) */
         [data-theme="light"] {
-            --bg-color: #f1f5f9;
+            --bg-color: #f8fafc;
             --text-main: #0f172a;
             --text-muted: #475569;
             
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             
-            --neon-1: #0284c7;
-            --neon-2: #7e22ce;
-            --neon-3: #dc2626;
-            --neon-4: #059669;
-            --neon-5: #ea580c;
-            --neon-6: #ca8a04;
+            --neon-blue: #0284c7;
+            --neon-purple: #7e22ce;
+            --neon-emerald: #059669;
+            --neon-gold: #d97706;
+            --neon-rose: #e11d48;
+            --neon-cyan: #0891b2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
 
         body {
             background-color: var(--bg-color); color: var(--text-main);
-            overflow-x: hidden; transition: background-color 0.5s;
+            overflow-x: hidden; transition: background-color 0.6s ease;
             perspective: 1000px;
         }
 
-        /* خلفية الجزيئات */
+        /* خلفية الجزيئات الناعمة */
         #particles-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
+            z-index: -1; pointer-events: none; opacity: 0.6;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--neon-1), var(--neon-2)); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
 
         /* =========================================
-           شريط التنقل (Header)
+           شريط التنقل (Header) - إصلاح الموبايل
            ========================================= */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 9, 20, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border); padding: 15px 5%;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--glass-border); padding: 12px 5%;
             display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); transition: 0.5s;
         }
-        [data-theme="light"] nav { background: rgba(255, 255, 255, 0.8); }
+        [data-theme="light"] nav { background: rgba(248, 250, 252, 0.8); }
 
-        .brand-logo { display: flex; align-items: center; gap: 15px; }
+        .brand-logo { display: flex; align-items: center; gap: 12px; }
+        
+        /* ضبط اللوجو ليكون دائري ومثالي */
         .brand-logo img {
-            width: 50px; height: 50px; border-radius: 50%;
-            border: 2px solid var(--neon-1); box-shadow: 0 0 15px var(--neon-1);
-            object-fit: contain; background: #fff;
+            width: 45px; height: 45px; border-radius: 50%;
+            border: 2px solid rgba(56, 189, 248, 0.5); 
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            object-fit: cover; background: #fff;
         }
+        
+        /* ضبط النص ليناسب الموبايل */
         .brand-logo span {
-            font-size: 24px; font-weight: 900;
-            background: linear-gradient(90deg, var(--neon-1), var(--neon-2));
-            -webkit-background-clip: text; color: transparent; text-transform: uppercase;
+            font-size: clamp(16px, 4vw, 22px); font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text; color: transparent; white-space: nowrap;
         }
 
         .theme-btn {
-            background: transparent; border: 1px solid var(--neon-1); color: var(--text-main);
-            padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 700;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); 
+            color: var(--text-main); border-radius: 30px; cursor: pointer; font-weight: 700;
             display: flex; align-items: center; gap: 8px; transition: 0.3s;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) inset;
+            padding: clamp(6px, 2vw, 10px) clamp(12px, 3vw, 20px);
+            font-size: clamp(12px, 3vw, 15px); white-space: nowrap;
         }
-        .theme-btn:hover { background: var(--neon-1); color: #000; box-shadow: 0 0 20px var(--neon-1); }
+        .theme-btn:hover { background: var(--neon-blue); color: #fff; border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
 
         /* =========================================
-           البانر العرضي الضخم (Hero Banner)
+           البانر العرضي (Hero Section) - تصميم هادئ وفخم
            ========================================= */
         .hero-banner {
-            margin-top: 80px; width: 100%; height: 350px; position: relative;
-            display: flex; justify-content: center; align-items: center; overflow: hidden;
-            border-bottom: 2px solid var(--neon-1);
+            margin-top: 75px; width: 100%; height: 350px; position: relative;
+            display: flex; justify-content: center; align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            background: linear-gradient(135deg, rgba(3,7,18,1) 0%, rgba(15,23,42,0.8) 100%);
+            overflow: hidden;
         }
         
-        /* مكان صورة المعرض الكبيرة */
-        .hero-banner img {
+        /* الصورة الخلفية للبانر (إن وجدت) */
+        .hero-bg-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; z-index: 1; filter: brightness(0.4); transition: 0.5s;
-        }
-        [data-theme="light"] .hero-banner img { filter: brightness(0.7); }
-
-        .hero-banner::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, var(--bg-color), transparent); z-index: 2;
+            object-fit: cover; z-index: 1; opacity: 0.3; filter: grayscale(50%); mix-blend-mode: overlay;
         }
 
-        .hero-content {
-            position: relative; z-index: 3; text-align: center; padding: 0 20px;
-        }
+        .hero-content { position: relative; z-index: 3; text-align: center; padding: 0 20px; width: 100%; }
+        
         .hero-content h1 {
-            font-size: 4em; font-weight: 900; margin-bottom: 10px;
-            text-shadow: 0 0 20px var(--neon-1); letter-spacing: 1px;
-            animation: textGlow 3s infinite alternate;
+            font-size: clamp(28px, 6vw, 55px); font-weight: 900; margin-bottom: 10px;
+            color: var(--text-main); letter-spacing: -0.5px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
-        .hero-content p {
-            font-size: 1.5em; font-weight: 700; color: var(--neon-4);
-            text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
-            background: rgba(0,0,0,0.3); display: inline-block; padding: 5px 20px; border-radius: 30px;
+        
+        .hero-content h1 span {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+            -webkit-background-clip: text; color: transparent;
         }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px var(--neon-1); }
-            100% { text-shadow: 0 0 30px var(--neon-2), 0 0 50px var(--neon-1); }
+        /* إصلاح الخط المشع (صار أنيق ومريح) */
+        .hero-content p {
+            font-size: clamp(14px, 4vw, 20px); font-weight: 600; color: var(--text-muted);
+            margin-top: 15px; max-width: 600px; margin-inline: auto; line-height: 1.6;
         }
 
         /* =========================================
-           شبكة الروابط مع تأثير 3D (Tilt Cards)
+           شبكة الروابط (Grid & Cards) - نعومة فائقة
            ========================================= */
-        .main-container {
-            max-width: 1500px; margin: -50px auto 100px; padding: 0 20px; position: relative; z-index: 10;
-        }
+        .main-container { max-width: 1300px; margin: -40px auto 100px; padding: 0 5%; position: relative; z-index: 10; }
 
-        .grid-dashboard {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;
-        }
+        .grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
 
-        /* الكرت الزجاجي (جاهز للتفاعل مع الجافاسكربت) */
-        .tilt-card {
-            background: var(--glass-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border); border-radius: 25px; padding: 35px;
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px;
             text-decoration: none; color: var(--text-main); display: flex; flex-direction: column;
             box-shadow: var(--glass-shadow); position: relative; overflow: hidden;
-            transform-style: preserve-3d; transition: border-color 0.3s, box-shadow 0.3s;
+            transform-style: preserve-3d; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* الإضاءة الخلفية للكرت */
-        .tilt-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 0;
+        /* تأثير المرور الناعم */
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            opacity: 0; transition: 0.4s; pointer-events: none; z-index: 0;
         }
-        .tilt-card:hover::before { opacity: 1; }
-        .tilt-card:hover { border-color: var(--neon-1); z-index: 100; }
+        .glass-card:hover::before { opacity: 1; }
+        .glass-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); }
 
-        /* محتوى الكرت (3D Pop-out) */
-        .card-content { transform: translateZ(40px); z-index: 1; display: flex; flex-direction: column; height: 100%; }
+        .card-content { transform: translateZ(30px); z-index: 1; display: flex; flex-direction: column; height: 100%; }
 
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        
         .icon-wrapper {
-            width: 70px; height: 70px; border-radius: 20px;
-            display: flex; justify-content: center; align-items: center; font-size: 32px;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            width: 65px; height: 65px; border-radius: 18px;
+            display: flex; justify-content: center; align-items: center; font-size: 28px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+            transition: 0.4s ease;
         }
-        .card-number { font-size: 50px; font-weight: 900; opacity: 0.1; line-height: 1; }
+        .glass-card:hover .icon-wrapper { transform: scale(1.08) rotate(5deg); }
 
-        .card-content h3 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
-        .card-content p { font-size: 16px; color: var(--text-muted); font-weight: 500; line-height: 1.6; flex-grow: 1; }
+        .card-number { font-size: 45px; font-weight: 900; opacity: 0.05; line-height: 1; transition: 0.4s; }
+        .glass-card:hover .card-number { opacity: 0.1; transform: scale(1.1); }
+
+        .card-content h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.5px; }
+        .card-content p { font-size: 15px; color: var(--text-muted); font-weight: 500; line-height: 1.6; flex-grow: 1; }
 
         .card-action {
-            margin-top: 25px; display: flex; align-items: center; gap: 10px;
-            font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s;
+            margin-top: 25px; display: flex; align-items: center; gap: 8px;
+            font-size: 14px; font-weight: 800; transition: 0.3s;
         }
-        .tilt-card:hover .card-action { gap: 20px; }
+        .glass-card:hover .card-action { gap: 15px; }
 
-        /* ألوان مخصصة لكل كرت ليعطي طابعاً حماسياً */
-        .card-1:hover { box-shadow: 0 15px 50px rgba(0, 243, 255, 0.3); border-color: var(--neon-1); }
-        .card-1 .icon-wrapper { background: rgba(0, 243, 255, 0.1); color: var(--neon-1); }
-        .card-1 .card-action { color: var(--neon-1); }
+        /* ألوان التوهج الفخمة لكل كرت عند التمرير */
+        .card-1:hover { box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15); } .card-1 .icon-wrapper { color: var(--neon-blue); } .card-1 .card-action { color: var(--neon-blue); }
+        .card-2:hover { box-shadow: 0 15px 40px rgba(192, 132, 252, 0.15); } .card-2 .icon-wrapper { color: var(--neon-purple); } .card-2 .card-action { color: var(--neon-purple); }
+        .card-3:hover { box-shadow: 0 15px 40px rgba(52, 211, 153, 0.15); } .card-3 .icon-wrapper { color: var(--neon-emerald); } .card-3 .card-action { color: var(--neon-emerald); }
+        .card-4:hover { box-shadow: 0 15px 40px rgba(251, 191, 36, 0.15); } .card-4 .icon-wrapper { color: var(--neon-gold); } .card-4 .card-action { color: var(--neon-gold); }
+        .card-5:hover { box-shadow: 0 15px 40px rgba(251, 113, 133, 0.15); } .card-5 .icon-wrapper { color: var(--neon-rose); } .card-5 .card-action { color: var(--neon-rose); }
+        .card-6:hover { box-shadow: 0 15px 40px rgba(34, 211, 238, 0.15); } .card-6 .icon-wrapper { color: var(--neon-cyan); } .card-6 .card-action { color: var(--neon-cyan); }
 
-        .card-2:hover { box-shadow: 0 15px 50px rgba(188, 19, 254, 0.3); border-color: var(--neon-2); }
-        .card-2 .icon-wrapper { background: rgba(188, 19, 254, 0.1); color: var(--neon-2); }
-        .card-2 .card-action { color: var(--neon-2); }
-
-        .card-3:hover { box-shadow: 0 15px 50px rgba(0, 255, 135, 0.3); border-color: var(--neon-4); }
-        .card-3 .icon-wrapper { background: rgba(0, 255, 135, 0.1); color: var(--neon-4); }
-        .card-3 .card-action { color: var(--neon-4); }
-
-        .card-4:hover { box-shadow: 0 15px 50px rgba(255, 154, 0, 0.3); border-color: var(--neon-5); }
-        .card-4 .icon-wrapper { background: rgba(255, 154, 0, 0.1); color: var(--neon-5); }
-        .card-4 .card-action { color: var(--neon-5); }
-
-        .card-5:hover { box-shadow: 0 15px 50px rgba(255, 0, 60, 0.3); border-color: var(--neon-3); }
-        .card-5 .icon-wrapper { background: rgba(255, 0, 60, 0.1); color: var(--neon-3); }
-        .card-5 .card-action { color: var(--neon-3); }
-
-        .card-6:hover { box-shadow: 0 15px 50px rgba(246, 255, 0, 0.3); border-color: var(--neon-6); }
-        .card-6 .icon-wrapper { background: rgba(246, 255, 0, 0.1); color: var(--neon-6); }
-        .card-6 .card-action { color: var(--neon-6); }
-
+        /* =========================================
+           شاشات الموبايل (Responsive Fixes)
+           ========================================= */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5em; }
-            .grid-dashboard { grid-template-columns: 1fr; }
-            .hero-banner { height: 250px; }
-            .tilt-card { transform: none !important; } /* إيقاف الـ 3D في الموبايل لتسهيل التصفح */
+            .hero-banner { height: 280px; margin-top: 65px; }
+            .main-container { margin-top: -30px; padding: 0 15px; }
+            .grid-dashboard { gap: 15px; }
+            .glass-card { padding: 25px; transform: none !important; } /* إيقاف 3D بالموبايل للحفاظ على النعومة */
+            .card-content { transform: none !important; }
         }
     </style>
 </head>
@@ -225,93 +214,93 @@
 
     <nav>
         <div class="brand-logo">
-            <img src="1000597074.png" alt="Ivan Logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iIzAwZjNmZiIvPjx0ZXh0IHg9IjUwIiB5PSI2NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzAwMCI+STwvdGV4dD48L3N2Zz4='">
+            <img src="1000597074.png" alt="Ivan Logo">
             <span>مركز إيفان الذكي</span>
         </div>
         <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
-            <i class="fa-solid fa-bolt"></i> <span>الوضع المضيء</span>
+            <i class="fa-solid fa-sun"></i> <span>المضيء</span>
         </button>
     </nav>
 
     <div class="hero-banner">
-        <img src="banner.jpg" alt="صورة المعرض الكبيرة" onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'">
+        <img src="banner.jpg" class="hero-bg-img" alt="" onerror="this.style.display='none'">
         <div class="hero-content">
-            <h1>لوحة معرض إيفان</h1>
-            <p>كل ما تحتاجه للسيطرة على السوق في مكان واحد</p>
+            <h1>لوحة <span>معرض إيفان</span></h1>
+            <p>كل ما تحتاجه للسيطرة على السوق وإدارة الأقسام بسلاسة في مكان واحد.</p>
         </div>
     </div>
 
     <main class="main-container">
         <div class="grid-dashboard">
             
-            <a href="https://mazn44.github.io/55-Customer-Responses/" target="_blank" class="tilt-card card-1">
+            <a href="https://mazn44.github.io/55-Customer-Responses/" target="_blank" class="glass-card card-1">
                 <div class="card-content">
                     <div class="card-header">
                         <div class="icon-wrapper"><i class="fa-solid fa-headset"></i></div>
                         <div class="card-number">01</div>
                     </div>
                     <h3>دليل الردود الذكية</h3>
-                    <p>كيف نرد على الزبون باحترافية وسرعة لبناء ثقة تدوم، وقواعد التعامل مع الشكاوى.</p>
-                    <div class="card-action">انطلق الآن <i class="fa-solid fa-arrow-left"></i></div>
+                    <p>كيف نرد على الزبون باحترافية، وقواعد التعامل وبناء ثقة مستدامة.</p>
+                    <div class="card-action">استكشف الدليل <i class="fa-solid fa-arrow-left"></i></div>
                 </div>
             </a>
 
-            <a href="https://mazn44.github.io/Page-Refresh-Report-66/" target="_blank" class="tilt-card card-2">
+            <a href="https://mazn44.github.io/Page-Refresh-Report-66/" target="_blank" class="glass-card card-2">
                 <div class="card-content">
                     <div class="card-header">
                         <div class="icon-wrapper"><i class="fa-solid fa-rocket"></i></div>
                         <div class="card-number">02</div>
                     </div>
                     <h3>خطة الصدارة الرقمية</h3>
-                    <p>الاستراتيجية السرية لاكتساح خرائط جوجل وتصدر نتائج البحث في دهوك.</p>
-                    <div class="card-action">استكشف الخطة <i class="fa-solid fa-arrow-left"></i></div>
+                    <p>الاستراتيجية الشاملة للسيطرة على محركات البحث وخرائط جوجل في دهوك.</p>
+                    <div class="card-action">انطلق للقمة <i class="fa-solid fa-arrow-left"></i></div>
                 </div>
             </a>
 
-            <a href="https://mazn44.github.io/Ivan-Constitution-/policy.html" target="_blank" class="tilt-card card-3">
+            <a href="https://mazn44.github.io/Ivan-Constitution-/policy.html" target="_blank" class="glass-card card-3">
                 <div class="card-content">
                     <div class="card-header">
                         <div class="icon-wrapper"><i class="fa-solid fa-scale-balanced"></i></div>
                         <div class="card-number">03</div>
                     </div>
                     <h3>سياسة المعرض</h3>
-                    <p>الدستور، القواعد الصارمة، والارشادات العامة لجميع موظفي وأقسام المعرض.</p>
+                    <p>القواعد، الإرشادات العامة، ودستور العمل الموحد المنظم لجميع الأقسام.</p>
                     <div class="card-action">عرض السياسة <i class="fa-solid fa-arrow-left"></i></div>
                 </div>
             </a>
 
-            <a href="https://mazn44.github.io/-/" target="_blank" class="tilt-card card-4">
+            <a href="https://mazn44.github.io/-/" target="_blank" class="glass-card card-4">
                 <div class="card-content">
                     <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-fingerprint"></i></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-building-user"></i></div>
                         <div class="card-number">04</div>
                     </div>
                     <h3>من نحن</h3>
-                    <p>تعرف على هوية معرض إيفان، قصتنا، رسالتنا، والخدمات التي نميز بها عملائنا.</p>
-                    <div class="card-action">اكتشف هويتنا <i class="fa-solid fa-arrow-left"></i></div>
+                    <p>تعرف على قصة معرض إيفان، رؤيتنا، والخدمات الاستثنائية التي نقدمها.</p>
+                    <div class="card-action">تعرف علينا <i class="fa-solid fa-arrow-left"></i></div>
                 </div>
             </a>
 
-            <a href="https://mazn44.github.io/My-Achievements-7/" target="_blank" class="tilt-card card-5">
+            <a href="https://mazn44.github.io/My-Achievements-7/" target="_blank" class="glass-card card-5">
                 <div class="card-content">
                     <div class="card-header">
                         <div class="icon-wrapper"><i class="fa-solid fa-medal"></i></div>
                         <div class="card-number">05</div>
                     </div>
                     <h3>إنجازات التسويق</h3>
-                    <p>النتائج الجبارة، النجاحات الرقمية، والهيكلة الإدارية التي غيرت مسار المعرض.</p>
+                    <p>النتائج الجبارة، التحولات الرقمية، والنجاحات التي حققتها إدارة التسويق.</p>
                     <div class="card-action">شاهد الإنجازات <i class="fa-solid fa-arrow-left"></i></div>
                 </div>
             </a>
 
-            <a href="https://mazn44.github.io/Exhibition-44/index.html" target="_blank" class="tilt-card card-6">
+            <a href="https://mazn44.github.io/Exhibition-44/index.html" target="_blank" class="glass-card card-6">
                 <div class="card-content">
                     <div class="card-header">
                         <div class="icon-wrapper"><i class="fa-solid fa-flag-checkered"></i></div>
                         <div class="card-number">06</div>
                     </div>
                     <h3>الملخص النهائي</h3>
-                    <p>الخلاصة الإدارية، خطة التطوير، والرؤية المستقبلية لمعرض إيفان.</p>
+                    <p>خلاصة العمل الإداري، وخطط التطوير والرؤية المستقبلية للمعرض.</p>
                     <div class="card-action">عرض الملخص <i class="fa-solid fa-arrow-left"></i></div>
                 </div>
             </a>
@@ -320,7 +309,7 @@
     </main>
 
     <script>
-        // 1. نظام تغيير المود (Dark/Light)
+        // 1. نظام المود (فخم وناعم)
         function toggleTheme() {
             const body = document.body;
             const themeBtn = document.getElementById('themeBtn');
@@ -329,65 +318,56 @@
 
             if (body.getAttribute('data-theme') === 'light') {
                 body.removeAttribute('data-theme');
-                icon.className = 'fa-solid fa-bolt';
-                text.textContent = 'الوضع المضيء';
-                particleColor = 'rgba(0, 243, 255, 0.4)'; // سيان
+                icon.className = 'fa-solid fa-sun';
+                text.textContent = 'المضيء';
+                particleColor = 'rgba(56, 189, 248, 0.3)';
             } else {
                 body.setAttribute('data-theme', 'light');
                 icon.className = 'fa-solid fa-moon';
-                text.textContent = 'الوضع المظلم';
-                particleColor = 'rgba(2, 132, 199, 0.3)'; // أزرق هادئ
+                text.textContent = 'المظلم';
+                particleColor = 'rgba(2, 132, 199, 0.2)';
             }
         }
 
-        // 2. تأثير الـ 3D Tilt للبطاقات عند مرور الماوس
-        const cards = document.querySelectorAll('.tilt-card');
-        
-        cards.forEach(card => {
-            // تفعيل الـ 3D فقط إذا كانت الشاشة أكبر من الموبايل
-            if(window.innerWidth > 768) {
+        // 2. تأثير الـ 3D (يعمل على الشاشات الكبيرة فقط لنعومة الموبايل)
+        const cards = document.querySelectorAll('.glass-card');
+        if(window.innerWidth > 768) {
+            cards.forEach(card => {
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left; // موقع الماوس X داخل الكرت
-                    const y = e.clientY - rect.top;  // موقع الماوس Y داخل الكرت
-                    
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
-                    const rotateX = ((y - centerY) / centerY) * -15; // زاوية الميلان X
-                    const rotateY = ((x - centerX) / centerX) * 15;  // زاوية الميلان Y
+                    const rotateX = ((y - centerY) / centerY) * -8; // ميلان خفيف وأنق
+                    const rotateY = ((x - centerX) / centerX) * 8;
                     
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                 });
-
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-                    card.style.transition = 'transform 0.5s ease';
                 });
-                
-                card.addEventListener('mouseenter', () => {
-                    card.style.transition = 'none'; // إلغاء الـ transition أثناء الحركة لتكون سلسة
-                });
-            }
-        });
+            });
+        }
 
-        // 3. خلفية الجزيئات المضيئة (Particles Canvas)
+        // 3. خلفية الجزيئات المريحة للعين
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, particles;
-        let particleColor = 'rgba(0, 243, 255, 0.4)';
+        let particleColor = 'rgba(56, 189, 248, 0.3)';
 
         function initCanvas() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 50; i++) {
+            // تقليل عدد الجزيئات ليكون المنظر أهدأ وأرقى
+            for (let i = 0; i < 40; i++) {
                 particles.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    r: Math.random() * 2.5 + 1,
-                    vx: Math.random() * 1 - 0.5,
-                    vy: Math.random() * 1 - 0.5
+                    r: Math.random() * 2 + 1,
+                    vx: Math.random() * 0.5 - 0.25,
+                    vy: Math.random() * 0.5 - 0.25
                 });
             }
         }
@@ -400,22 +380,18 @@
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                 ctx.fill();
-                
-                p.x += p.vx;
-                p.y += p.vy;
-                
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > width) p.vx *= -1;
                 if (p.y < 0 || p.y > height) p.vy *= -1;
             });
 
-            // رسم الخطوط المضيئة بين الجزيئات المتقاربة
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
-                    if (dist < 120) {
+                    if (dist < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = particleColor.replace('0.4', (1 - dist/120) * 0.2);
-                        ctx.lineWidth = 1.5;
+                        ctx.strokeStyle = particleColor.replace('0.3', (1 - dist/100) * 0.15);
+                        ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
