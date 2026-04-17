@@ -1,409 +1,515 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز إيفان الذكي | سهلنا عليك عملك </title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* =========================================
-           الثيم المظلم (High-End Dark Tech) - فخم وناعم
-           ========================================= */
-        :root {
-            --bg-color: #030712; /* أسود ليلي عميق */
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            
-            --glass-bg: rgba(15, 23, 42, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            
-            /* نيون ناعم ومريح للعين */
-            --neon-blue: #38bdf8; 
-            --neon-purple: #c084fc;
-            --neon-emerald: #34d399;
-            --neon-gold: #fbbf24;
-            --neon-rose: #fb7185;
-            --neon-cyan: #22d3ee;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مركز إيفان الذكي | لوحة المعرض</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bg: #f0f4ff;
+  --surface: rgba(255,255,255,0.75);
+  --surface2: rgba(255,255,255,0.55);
+  --border: rgba(255,255,255,0.9);
+  --text: #0f172a;
+  --muted: #475569;
+  --shadow: 0 8px 40px rgba(100,120,200,0.13);
+  --blob1: rgba(99,102,241,0.18);
+  --blob2: rgba(236,72,153,0.13);
+  --blob3: rgba(34,211,238,0.14);
+}
+[data-theme="dark"] {
+  --bg: #080c14;
+  --surface: rgba(15,22,40,0.72);
+  --surface2: rgba(10,16,32,0.65);
+  --border: rgba(255,255,255,0.06);
+  --text: #f1f5ff;
+  --muted: #7c8db0;
+  --shadow: 0 8px 40px rgba(0,0,0,0.5);
+  --blob1: rgba(99,102,241,0.09);
+  --blob2: rgba(236,72,153,0.07);
+  --blob3: rgba(34,211,238,0.07);
+}
 
-        /* الثيم الفاتح (Clean Light Mode) */
-        [data-theme="light"] {
-            --bg-color: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            
-            --glass-bg: rgba(255, 255, 255, 0.6);
-            --glass-border: rgba(0, 0, 0, 0.05);
-            --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            
-            --neon-blue: #0284c7;
-            --neon-purple: #7e22ce;
-            --neon-emerald: #059669;
-            --neon-gold: #d97706;
-            --neon-rose: #e11d48;
-            --neon-cyan: #0891b2;
-        }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+  transition:background .5s,color .5s;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+/* BLOBS */
+.blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;filter:blur(90px);}
+.b{position:absolute;border-radius:50%;animation:blob 18s infinite alternate ease-in-out;}
+.b1{width:600px;height:600px;background:var(--blob1);top:-15%;right:-10%;animation-delay:0s;}
+.b2{width:500px;height:500px;background:var(--blob2);bottom:-15%;left:-10%;animation-delay:-6s;}
+.b3{width:400px;height:400px;background:var(--blob3);top:50%;left:40%;animation-delay:-12s;}
+@keyframes blob{
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(80px,60px) scale(1.25);}
+}
 
-        body {
-            background-color: var(--bg-color); color: var(--text-main);
-            overflow-x: hidden; transition: background-color 0.6s ease;
-            perspective: 1000px;
-        }
+/* GRAIN */
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:.5;
+}
 
-        /* خلفية الجزيئات الناعمة */
-        #particles-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none; opacity: 0.6;
-        }
+/* ── TOP NAV ── */
+.nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 5%;max-width:1500px;margin:0 auto;
+}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-brand img{
+  width:44px;height:44px;border-radius:12px;
+  border:2px solid rgba(99,102,241,.4);
+  object-fit:cover;background:#fff;
+}
+.nav-brand span{font-size:16px;font-weight:800;color:var(--text);opacity:.7;}
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
+.theme-btn{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 22px;border-radius:50px;border:none;cursor:pointer;
+  background:var(--surface);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  color:var(--text);font-size:15px;font-weight:700;
+  box-shadow:var(--shadow);
+  transition:all .3s;
+}
+.theme-btn:hover{transform:translateY(-2px);}
+.theme-btn i{font-size:16px;}
 
-        /* =========================================
-           شريط التنقل (Header) - إصلاح الموبايل
-           ========================================= */
-        nav {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--glass-border); padding: 12px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); transition: 0.5s;
-        }
-        [data-theme="light"] nav { background: rgba(248, 250, 252, 0.8); }
+/* ── HERO ── */
+.hero{
+  text-align:center;
+  padding:40px 5% 50px;
+  max-width:800px;margin:0 auto;
+}
+.logo-wrap{
+  position:relative;display:inline-block;margin-bottom:28px;
+}
+.logo-ring{
+  position:absolute;inset:-8px;border-radius:50%;
+  background:conic-gradient(from 0deg, #6366f1, #ec4899, #22d3ee, #6366f1);
+  animation:spin 4s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.logo-inner{
+  position:relative;z-index:1;
+  width:100px;height:100px;border-radius:50%;
+  background:#fff;border:4px solid var(--bg);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.logo-inner img{width:100%;height:100%;object-fit:cover;}
 
-        .brand-logo { display: flex; align-items: center; gap: 12px; }
-        
-        /* ضبط اللوجو ليكون دائري ومثالي */
-        .brand-logo img {
-            width: 45px; height: 45px; border-radius: 50%;
-            border: 2px solid rgba(56, 189, 248, 0.5); 
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-            object-fit: cover; background: #fff;
-        }
-        
-        /* ضبط النص ليناسب الموبايل */
-        .brand-logo span {
-            font-size: clamp(16px, 4vw, 22px); font-weight: 900;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text; color: transparent; white-space: nowrap;
-        }
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;border-radius:30px;font-size:13px;font-weight:700;
+  background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.25);
+  color:#6366f1;margin-bottom:18px;letter-spacing:.5px;
+}
+[data-theme="dark"] .hero-badge{background:rgba(99,102,241,.12);color:#818cf8;}
 
-        .theme-btn {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); 
-            color: var(--text-main); border-radius: 30px; cursor: pointer; font-weight: 700;
-            display: flex; align-items: center; gap: 8px; transition: 0.3s;
-            padding: clamp(6px, 2vw, 10px) clamp(12px, 3vw, 20px);
-            font-size: clamp(12px, 3vw, 15px); white-space: nowrap;
-        }
-        .theme-btn:hover { background: var(--neon-blue); color: #fff; border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+.hero h1{
+  font-size:clamp(2.2em,5vw,3.8em);font-weight:900;
+  line-height:1.2;margin-bottom:12px;
+  background:linear-gradient(135deg,#6366f1 0%,#ec4899 50%,#22d3ee 100%);
+  -webkit-background-clip:text;color:transparent;
+}
+.hero p{
+  font-size:1.05em;color:var(--muted);line-height:1.75;
+  max-width:600px;margin:0 auto 0;
+}
 
-        /* =========================================
-           البانر العرضي (Hero Section) - تصميم هادئ وفخم
-           ========================================= */
-        .hero-banner {
-            margin-top: 75px; width: 100%; height: 350px; position: relative;
-            display: flex; justify-content: center; align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-            background: linear-gradient(135deg, rgba(3,7,18,1) 0%, rgba(15,23,42,0.8) 100%);
-            overflow: hidden;
-        }
-        
-        /* الصورة الخلفية للبانر (إن وجدت) */
-        .hero-bg-img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; z-index: 1; opacity: 0.3; filter: grayscale(50%); mix-blend-mode: overlay;
-        }
+/* ── INSTRUCTION BANNER ── */
+.instruction{
+  max-width:760px;margin:0 auto 50px;
+  background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(236,72,153,.08));
+  border:1px solid rgba(99,102,241,.2);
+  border-radius:20px;padding:18px 28px;
+  display:flex;align-items:center;gap:16px;
+  backdrop-filter:blur(10px);
+}
+.instruction i{font-size:24px;color:#6366f1;flex-shrink:0;}
+.instruction p{font-size:15px;color:var(--muted);line-height:1.6;}
+.instruction strong{color:var(--text);}
 
-        .hero-content { position: relative; z-index: 3; text-align: center; padding: 0 20px; width: 100%; }
-        
-        .hero-content h1 {
-            font-size: clamp(28px, 6vw, 55px); font-weight: 900; margin-bottom: 10px;
-            color: var(--text-main); letter-spacing: -0.5px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-content h1 span {
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
-            -webkit-background-clip: text; color: transparent;
-        }
+/* ── GRID ── */
+.container{max-width:1400px;margin:0 auto;padding:0 5% 100px;}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+  gap:26px;
+}
 
-        /* إصلاح الخط المشع (صار أنيق ومريح) */
-        .hero-content p {
-            font-size: clamp(14px, 4vw, 20px); font-weight: 600; color: var(--text-muted);
-            margin-top: 15px; max-width: 600px; margin-inline: auto; line-height: 1.6;
-        }
+/* ── CARDS ── */
+.card{
+  text-decoration:none;
+  display:flex;flex-direction:column;
+  background:var(--surface);
+  backdrop-filter:blur(24px);
+  border:1px solid var(--border);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:all .45s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-10px) scale(1.015);
+  box-shadow:0 30px 60px rgba(0,0,0,.15);
+}
+[data-theme="dark"] .card:hover{box-shadow:0 30px 60px rgba(0,0,0,.4);}
 
-        /* =========================================
-           شبكة الروابط (Grid & Cards) - نعومة فائقة
-           ========================================= */
-        .main-container { max-width: 1300px; margin: -40px auto 100px; padding: 0 5%; position: relative; z-index: 10; }
+/* colored top stripe */
+.card-stripe{height:5px;width:100%;flex-shrink:0;}
 
-        .grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+/* card body */
+.card-body{padding:30px 28px;display:flex;flex-direction:column;flex:1;}
 
-        .glass-card {
-            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px;
-            text-decoration: none; color: var(--text-main); display: flex; flex-direction: column;
-            box-shadow: var(--glass-shadow); position: relative; overflow: hidden;
-            transform-style: preserve-3d; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+/* icon */
+.icon-wrap{
+  width:68px;height:68px;border-radius:20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;margin-bottom:20px;
+  transition:transform .4s;
+}
+.card:hover .icon-wrap{transform:scale(1.12) rotate(6deg);}
 
-        /* تأثير المرور الناعم */
-        .glass-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
-            opacity: 0; transition: 0.4s; pointer-events: none; z-index: 0;
-        }
-        .glass-card:hover::before { opacity: 1; }
-        .glass-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); }
+.card-num{
+  position:absolute;top:16px;left:20px;
+  font-size:80px;font-weight:900;line-height:1;
+  opacity:.04;transition:.4s;pointer-events:none;
+  color:var(--text);
+}
+.card:hover .card-num{opacity:.08;transform:scale(1.08);}
 
-        .card-content { transform: translateZ(30px); z-index: 1; display: flex; flex-direction: column; height: 100%; }
+.card-title{font-size:22px;font-weight:900;margin-bottom:10px;color:var(--text);}
+.card-desc{font-size:15px;color:var(--muted);line-height:1.7;flex:1;}
 
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        
-        .icon-wrapper {
-            width: 65px; height: 65px; border-radius: 18px;
-            display: flex; justify-content: center; align-items: center; font-size: 28px;
-            background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
-            transition: 0.4s ease;
-        }
-        .glass-card:hover .icon-wrapper { transform: scale(1.08) rotate(5deg); }
+/* ── BIG OPEN BUTTON ── */
+.open-btn{
+  margin-top:24px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 22px;
+  border-radius:16px;
+  font-size:16px;font-weight:800;
+  position:relative;overflow:hidden;
+  transition:all .35s;
+  border:2px solid transparent;
+}
+.open-btn .btn-text{display:flex;align-items:center;gap:10px;}
+.open-btn .btn-arrow{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:12px;
+  background:rgba(255,255,255,.25);
+  font-size:18px;
+  transition:transform .35s,background .35s;
+  flex-shrink:0;
+}
+.card:hover .btn-arrow{transform:translateX(-8px);background:rgba(255,255,255,.4);}
+.open-btn::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.06);
+  opacity:0;transition:.35s;
+}
+.card:hover .open-btn::after{opacity:1;}
 
-        .card-number { font-size: 45px; font-weight: 900; opacity: 0.05; line-height: 1; transition: 0.4s; }
-        .glass-card:hover .card-number { opacity: 0.1; transform: scale(1.1); }
+/* click pulse animation */
+@keyframes clickPulse{
+  0%{box-shadow:0 0 0 0 rgba(99,102,241,.5);}
+  100%{box-shadow:0 0 0 18px rgba(99,102,241,0);}
+}
+.open-btn:active{animation:clickPulse .4s ease;}
 
-        .card-content h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.5px; }
-        .card-content p { font-size: 15px; color: var(--text-muted); font-weight: 500; line-height: 1.6; flex-grow: 1; }
+/* ── CARD COLORS ── */
+/* 1 Blue */
+.c1 .card-stripe{background:linear-gradient(90deg,#6366f1,#818cf8);}
+.c1 .icon-wrap{background:rgba(99,102,241,.12);color:#6366f1;}
+[data-theme="dark"] .c1 .icon-wrap{color:#818cf8;}
+.c1 .open-btn{background:linear-gradient(135deg,#6366f1,#818cf8);color:#fff;}
+.c1:hover{border-color:rgba(99,102,241,.35);}
 
-        .card-action {
-            margin-top: 25px; display: flex; align-items: center; gap: 8px;
-            font-size: 14px; font-weight: 800; transition: 0.3s;
-        }
-        .glass-card:hover .card-action { gap: 15px; }
+/* 2 Pink */
+.c2 .card-stripe{background:linear-gradient(90deg,#ec4899,#f472b6);}
+.c2 .icon-wrap{background:rgba(236,72,153,.12);color:#ec4899;}
+[data-theme="dark"] .c2 .icon-wrap{color:#f472b6;}
+.c2 .open-btn{background:linear-gradient(135deg,#ec4899,#f472b6);color:#fff;}
+.c2:hover{border-color:rgba(236,72,153,.35);}
 
-        /* ألوان التوهج الفخمة لكل كرت عند التمرير */
-        .card-1:hover { box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15); } .card-1 .icon-wrapper { color: var(--neon-blue); } .card-1 .card-action { color: var(--neon-blue); }
-        .card-2:hover { box-shadow: 0 15px 40px rgba(192, 132, 252, 0.15); } .card-2 .icon-wrapper { color: var(--neon-purple); } .card-2 .card-action { color: var(--neon-purple); }
-        .card-3:hover { box-shadow: 0 15px 40px rgba(52, 211, 153, 0.15); } .card-3 .icon-wrapper { color: var(--neon-emerald); } .card-3 .card-action { color: var(--neon-emerald); }
-        .card-4:hover { box-shadow: 0 15px 40px rgba(251, 191, 36, 0.15); } .card-4 .icon-wrapper { color: var(--neon-gold); } .card-4 .card-action { color: var(--neon-gold); }
-        .card-5:hover { box-shadow: 0 15px 40px rgba(251, 113, 133, 0.15); } .card-5 .icon-wrapper { color: var(--neon-rose); } .card-5 .card-action { color: var(--neon-rose); }
-        .card-6:hover { box-shadow: 0 15px 40px rgba(34, 211, 238, 0.15); } .card-6 .icon-wrapper { color: var(--neon-cyan); } .card-6 .card-action { color: var(--neon-cyan); }
+/* 3 Emerald */
+.c3 .card-stripe{background:linear-gradient(90deg,#10b981,#34d399);}
+.c3 .icon-wrap{background:rgba(16,185,129,.12);color:#10b981;}
+[data-theme="dark"] .c3 .icon-wrap{color:#34d399;}
+.c3 .open-btn{background:linear-gradient(135deg,#10b981,#34d399);color:#fff;}
+.c3:hover{border-color:rgba(16,185,129,.35);}
 
-        /* =========================================
-           شاشات الموبايل (Responsive Fixes)
-           ========================================= */
-        @media (max-width: 768px) {
-            .hero-banner { height: 280px; margin-top: 65px; }
-            .main-container { margin-top: -30px; padding: 0 15px; }
-            .grid-dashboard { gap: 15px; }
-            .glass-card { padding: 25px; transform: none !important; } /* إيقاف 3D بالموبايل للحفاظ على النعومة */
-            .card-content { transform: none !important; }
-        }
-    </style>
+/* 4 Amber */
+.c4 .card-stripe{background:linear-gradient(90deg,#f59e0b,#fbbf24);}
+.c4 .icon-wrap{background:rgba(245,158,11,.12);color:#f59e0b;}
+[data-theme="dark"] .c4 .icon-wrap{color:#fbbf24;}
+.c4 .open-btn{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;}
+.c4:hover{border-color:rgba(245,158,11,.35);}
+
+/* 5 Red */
+.c5 .card-stripe{background:linear-gradient(90deg,#ef4444,#f87171);}
+.c5 .icon-wrap{background:rgba(239,68,68,.12);color:#ef4444;}
+[data-theme="dark"] .c5 .icon-wrap{color:#f87171;}
+.c5 .open-btn{background:linear-gradient(135deg,#ef4444,#f87171);color:#fff;}
+.c5:hover{border-color:rgba(239,68,68,.35);}
+
+/* 6 Cyan */
+.c6 .card-stripe{background:linear-gradient(90deg,#06b6d4,#22d3ee);}
+.c6 .icon-wrap{background:rgba(6,182,212,.12);color:#06b6d4;}
+[data-theme="dark"] .c6 .icon-wrap{color:#22d3ee;}
+.c6 .open-btn{background:linear-gradient(135deg,#06b6d4,#22d3ee);color:#fff;}
+.c6:hover{border-color:rgba(6,182,212,.35);}
+
+/* ── TAGS ── */
+.card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;}
+.tag{
+  font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:20px;
+  background:rgba(99,102,241,.08);color:#6366f1;
+  border:1px solid rgba(99,102,241,.18);letter-spacing:.3px;
+}
+[data-theme="dark"] .tag{background:rgba(99,102,241,.1);color:#818cf8;}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:40px 5% 30px;
+  border-top:1px solid var(--border);
+  background:var(--surface2);backdrop-filter:blur(20px);
+}
+.footer-logo{
+  font-size:18px;font-weight:900;letter-spacing:2px;
+  background:linear-gradient(90deg,#6366f1,#ec4899,#22d3ee);
+  -webkit-background-clip:text;color:transparent;
+  margin-bottom:8px;
+}
+footer p{font-size:13px;color:var(--muted);margin-bottom:4px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr;}
+  .hero h1{font-size:2em;}
+  .nav{padding:16px 18px;}
+  .instruction{flex-direction:column;text-align:center;}
+}
+</style>
 </head>
 <body>
 
-    <canvas id="particles-canvas"></canvas>
+<div class="blobs">
+  <div class="b b1"></div>
+  <div class="b b2"></div>
+  <div class="b b3"></div>
+</div>
 
-    <nav>
-        <div class="brand-logo">
-            <img src="1000597074.png" alt="Ivan Logo">
-            <span>مركز إيفان الزكي</span>
-        </div>
-        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
-            <i class="fa-solid fa-sun"></i> <span>المضيء</span>
-        </button>
-    </nav>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <img src="1000597074.png" alt="Ivan"
+      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjNjM2NmYxIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIj5pPC90ZXh0Pjwvc3ZnPg=='">
+    <span>Ivan Furniture — دهوك</span>
+  </div>
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
+    <i class="fa-solid fa-moon" id="themeIcon"></i>
+    <span id="themeText">الوضع الداكن</span>
+  </button>
+</nav>
 
-    <div class="hero-banner">
-        <img src="banner.jpg" class="hero-bg-img" alt="" onerror="this.style.display='none'">
-        <div class="hero-content">
-            <h1>لوحة <span>معرض إيفان</span></h1>
-            <p>تطوير داخلي حصري بنية تحتية رقمية مصممة خصيصاً لمعرض إيفان / كل ما تحتاجه للسيطرة على السوق وإدارة الأقسام بسلاسة في مكان واحد.</p>
-        </div>
+<!-- HERO -->
+<header class="hero">
+  <div class="logo-wrap">
+    <div class="logo-ring"></div>
+    <div class="logo-inner">
+      <img src="1000597074.png" alt="Ivan Logo"
+        onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjNjM2NmYxIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIj5pPC90ZXh0Pjwvc3ZnPg=='">
     </div>
+  </div>
+  <div class="hero-badge"><i class="fa-solid fa-store"></i> معرض إيفان للأثاث — دهوك</div>
+  <h1>مركز إيفان الذكي</h1>
+  <p>كل ما تحتاجه عن المعرض، السياسات، وخطط التطوير في مكان واحد — اضغط على أي بطاقة لتدخل مباشرة</p>
+</header>
 
-    <main class="main-container">
-        <div class="grid-dashboard">
-            
-            <a href="https://mazn44.github.io/55-Customer-Responses/" target="_blank" class="glass-card card-1">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-headset"></i></div>
-                        <div class="card-number">01</div>
-                    </div>
-                    <h3>دليل الردود الذكية</h3>
-                    <p>كيف نرد على الزبون باحترافية، وقواعد التعامل وبناء ثقة مستدامة.</p>
-                    <div class="card-action">استكشف الدليل <i class="fa-solid fa-arrow-left"></i></div>
-                </div>
-            </a>
+<!-- INSTRUCTION BANNER -->
+<div class="container">
+<div class="instruction">
+  <i class="fa-solid fa-hand-pointer"></i>
+  <p>👇 <strong>اضغط على زر "افتح الملف"</strong> في أي بطاقة تحتها للدخول المباشر إلى ذلك القسم — كل بطاقة تفتح في نافذة جديدة.</p>
+</div>
 
-            <a href="https://mazn44.github.io/Page-Refresh-Report-66/" target="_blank" class="glass-card card-2">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-rocket"></i></div>
-                        <div class="card-number">02</div>
-                    </div>
-                    <h3>خطة الصدارة الرقمية</h3>
-                    <p>الاستراتيجية الشاملة للسيطرة على محركات البحث وخرائط جوجل في دهوك.</p>
-                    <div class="card-action">انطلق للقمة <i class="fa-solid fa-arrow-left"></i></div>
-                </div>
-            </a>
+<!-- GRID -->
+<div class="grid">
 
-            <a href="https://mazn44.github.io/Ivan-Constitution-/policy.html" target="_blank" class="glass-card card-3">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <div class="card-number">03</div>
-                    </div>
-                    <h3>سياسة المعرض</h3>
-                    <p>القواعد، الإرشادات العامة، ودستور العمل الموحد المنظم لجميع الأقسام.</p>
-                    <div class="card-action">عرض السياسة <i class="fa-solid fa-arrow-left"></i></div>
-                </div>
-            </a>
-
-            <a href="https://mazn44.github.io/-/" target="_blank" class="glass-card card-4">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-building-user"></i></div>
-                        <div class="card-number">04</div>
-                    </div>
-                    <h3>من نحن</h3>
-                    <p>تعرف على قصة معرض إيفان، رؤيتنا، والخدمات الاستثنائية التي نقدمها.</p>
-                    <div class="card-action">تعرف علينا <i class="fa-solid fa-arrow-left"></i></div>
-                </div>
-            </a>
-
-            <a href="https://mazn44.github.io/My-Achievements-7/" target="_blank" class="glass-card card-5">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-medal"></i></div>
-                        <div class="card-number">05</div>
-                    </div>
-                    <h3>إنجازات التسويق</h3>
-                    <p>النتائج الجبارة، التحولات الرقمية، والنجاحات التي حققتها إدارة التسويق.</p>
-                    <div class="card-action">شاهد الإنجازات <i class="fa-solid fa-arrow-left"></i></div>
-                </div>
-            </a>
-
-            <a href="https://mazn44.github.io/Exhibition-44/index.html" target="_blank" class="glass-card card-6">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="icon-wrapper"><i class="fa-solid fa-flag-checkered"></i></div>
-                        <div class="card-number">06</div>
-                    </div>
-                    <h3>الملخص النهائي</h3>
-                    <p>خلاصة العمل الإداري، وخطط التطوير والرؤية المستقبلية للمعرض.</p>
-                    <div class="card-action">عرض الملخص <i class="fa-solid fa-arrow-left"></i></div>
-                </div>
-            </a>
-
+  <!-- 1 -->
+  <a href="https://mazn44.github.io/55-Customer-Responses/" target="_blank" class="card c1">
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <span class="card-num">1</span>
+      <div class="icon-wrap"><i class="fa-solid fa-headset"></i></div>
+      <div class="card-tags">
+        <span class="tag">خدمة العملاء</span>
+        <span class="tag">الردود</span>
+      </div>
+      <h3 class="card-title">دليل الردود الذكية</h3>
+      <p class="card-desc">كيف نرد على الزبون باحترافية عالية وقواعد التعامل مع جميع المواقف والحالات الصعبة.</p>
+      <div class="open-btn">
+        <div class="btn-text">
+          <i class="fa-solid fa-folder-open"></i>
+          افتح الملف الآن
         </div>
-    </main>
+        <div class="btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </a>
 
-    <script>
-        // 1. نظام المود (فخم وناعم)
-        function toggleTheme() {
-            const body = document.body;
-            const themeBtn = document.getElementById('themeBtn');
-            const icon = themeBtn.querySelector('i');
-            const text = themeBtn.querySelector('span');
+  <!-- 2 -->
+  <a href="https://mazn44.github.io/Page-Refresh-Report-66/" target="_blank" class="card c2">
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <span class="card-num">2</span>
+      <div class="icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="card-tags">
+        <span class="tag">التسويق</span>
+        <span class="tag">جوجل</span>
+        <span class="tag">الصدارة</span>
+      </div>
+      <h3 class="card-title">خطة الصدارة الرقمية</h3>
+      <p class="card-desc">الاستراتيجية الشاملة لكيف نصير الرقم واحد في بحث جوجل ودهوك وخرائط الذكاء الاصطناعي.</p>
+      <div class="open-btn">
+        <div class="btn-text">
+          <i class="fa-solid fa-folder-open"></i>
+          افتح الملف الآن
+        </div>
+        <div class="btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </a>
 
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-                icon.className = 'fa-solid fa-sun';
-                text.textContent = 'المضيء';
-                particleColor = 'rgba(56, 189, 248, 0.3)';
-            } else {
-                body.setAttribute('data-theme', 'light');
-                icon.className = 'fa-solid fa-moon';
-                text.textContent = 'المظلم';
-                particleColor = 'rgba(2, 132, 199, 0.2)';
-            }
-        }
+  <!-- 3 -->
+  <a href="https://mazn44.github.io/Ivan-Constitution-/policy.html" target="_blank" class="card c3">
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <span class="card-num">3</span>
+      <div class="icon-wrap"><i class="fa-solid fa-scale-balanced"></i></div>
+      <div class="card-tags">
+        <span class="tag">السياسات</span>
+        <span class="tag">القواعد</span>
+      </div>
+      <h3 class="card-title">سياسة المعرض</h3>
+      <p class="card-desc">القواعد والإرشادات العامة ودستور العمل الموحد لجميع أقسام معرض إيفان للأثاث.</p>
+      <div class="open-btn">
+        <div class="btn-text">
+          <i class="fa-solid fa-folder-open"></i>
+          افتح الملف الآن
+        </div>
+        <div class="btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </a>
 
-        // 2. تأثير الـ 3D (يعمل على الشاشات الكبيرة فقط لنعومة الموبايل)
-        const cards = document.querySelectorAll('.glass-card');
-        if(window.innerWidth > 768) {
-            cards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -8; // ميلان خفيف وأنق
-                    const rotateY = ((x - centerX) / centerX) * 8;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-                });
-            });
-        }
+  <!-- 4 -->
+  <a href="https://mazn44.github.io/-/" target="_blank" class="card c4">
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <span class="card-num">4</span>
+      <div class="icon-wrap"><i class="fa-solid fa-circle-info"></i></div>
+      <div class="card-tags">
+        <span class="tag">التعريف</span>
+        <span class="tag">الرؤية</span>
+      </div>
+      <h3 class="card-title">من نحن</h3>
+      <p class="card-desc">تعرف على معرض إيفان، رؤيتنا، قيمنا، والخدمات المتميزة التي نقدمها لعملائنا الكرام.</p>
+      <div class="open-btn">
+        <div class="btn-text">
+          <i class="fa-solid fa-folder-open"></i>
+          افتح الملف الآن
+        </div>
+        <div class="btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </a>
 
-        // 3. خلفية الجزيئات المريحة للعين
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, particles;
-        let particleColor = 'rgba(56, 189, 248, 0.3)';
+  <!-- 5 -->
+  <a href="https://mazn44.github.io/My-Achievements-7/" target="_blank" class="card c5">
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <span class="card-num">5</span>
+      <div class="icon-wrap"><i class="fa-solid fa-medal"></i></div>
+      <div class="card-tags">
+        <span class="tag">الإنجازات</span>
+        <span class="tag">النتائج</span>
+      </div>
+      <h3 class="card-title">إنجازات التسويق</h3>
+      <p class="card-desc">النتائج والنجاحات الرقمية والتطوير الذي تم إنجازه في قسم التسويق خلال الفترة الأخيرة.</p>
+      <div class="open-btn">
+        <div class="btn-text">
+          <i class="fa-solid fa-folder-open"></i>
+          افتح الملف الآن
+        </div>
+        <div class="btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </a>
 
-        function initCanvas() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            particles = [];
-            // تقليل عدد الجزيئات ليكون المنظر أهدأ وأرقى
-            for (let i = 0; i < 40; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    r: Math.random() * 2 + 1,
-                    vx: Math.random() * 0.5 - 0.25,
-                    vy: Math.random() * 0.5 - 0.25
-                });
-            }
-        }
+  <!-- 6 -->
+  <a href="https://mazn44.github.io/Exhibition-44/index.html" target="_blank" class="card c6">
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <span class="card-num">6</span>
+      <div class="icon-wrap"><i class="fa-solid fa-flag-checkered"></i></div>
+      <div class="card-tags">
+        <span class="tag">الخلاصة</span>
+        <span class="tag">المستقبل</span>
+      </div>
+      <h3 class="card-title">الملخص النهائي</h3>
+      <p class="card-desc">خلاصة العمل الكامل وخطة التطوير الشاملة والرؤية المستقبلية لمعرض إيفان للأثاث دهوك.</p>
+      <div class="open-btn">
+        <div class="btn-text">
+          <i class="fa-solid fa-folder-open"></i>
+          افتح الملف الآن
+        </div>
+        <div class="btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </a>
 
-        function drawParticles() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = particleColor;
-            
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fill();
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-            });
+</div><!-- /grid -->
+</div><!-- /container -->
 
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
-                    if (dist < 100) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = particleColor.replace('0.3', (1 - dist/100) * 0.15);
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(drawParticles);
-        }
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">IVAN FURNITURE GALLERY</div>
+  <p>معرض إيفان للأثاث — دهوك، العراق</p>
+  <p style="margin-top:10px;font-size:12px;">© 2026 Ivan Furniture Gallery. All Rights Reserved.</p>
+</footer>
 
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        drawParticles();
-    </script>
+<script>
+function toggleTheme(){
+  const dark = document.body.getAttribute('data-theme')==='dark';
+  document.body.setAttribute('data-theme', dark ? '' : 'dark');
+  document.getElementById('themeIcon').className = dark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+  document.getElementById('themeText').textContent = dark ? 'الوضع الداكن' : 'الوضع الفاتح';
+  if(!dark) document.body.setAttribute('data-theme','dark');
+  else document.body.removeAttribute('data-theme');
+}
+
+// Stagger card entrance
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.card').forEach((c,i)=>{
+    c.style.opacity='0';
+    c.style.transform='translateY(30px)';
+    c.style.transition=`opacity .5s ${i*.09}s, transform .5s ${i*.09}s, box-shadow .45s, border-color .45s`;
+    setTimeout(()=>{ c.style.opacity='1'; c.style.transform='translateY(0)'; }, 100+i*90);
+  });
+});
+</script>
 </body>
 </html>
+ 
